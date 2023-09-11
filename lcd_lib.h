@@ -6,22 +6,21 @@
 
 #include <inttypes.h>
 
+//Defines your PINS accordingly to your configuration
+
 #define LCD_CONTROL_DDR		DDRC
 #define LCD_CONTROL_PORT	PORTC
-#define LCD_RS_PIN			6
-#define LCD_RW_PIN			5
+#define LCD_RS_PIN		6
+#define LCD_RW_PIN		5
 #define LCD_ENABLE_PIN		4
 //
 #define LCD_DATA1_DDR		DDRC
 #define LCD_DATA1_PORT		PORTC
 #define LCD_DATA1_PIN		PINC
-#define LCD_D4				0
-#define LCD_D5				1
-#define LCD_D6				2
-#define LCD_D7				3
-
-#define LED_GREEN PORTA4
-#define LED_RED PORTA5
+#define LCD_D4			0
+#define LCD_D5			1
+#define LCD_D6			2
+#define LCD_D7			3
 
  void lcd_cmd(uint8_t command)  //used to write instruction to LCD
  {
@@ -98,11 +97,6 @@ void LCD_goto_XY(uint8_t x, uint8_t y) {
 	// Set the cursor to the desired position
 	lcd_cmd(0x80 | position);
 }
-
-//LCD_goto_XY(16, 3);
-// Example usage to print a character at the cursor position
-//lcd_data('A');
-
  void LCD_init()
  {
 	 lcd_cmd(0x02);   //Set cursor to home position
@@ -119,11 +113,9 @@ lcd_cmd(0x01);
 lcd_cmd (0x80);
 }
 
- 
-//void  LCD_pin_init();
-//void  LCD_init();
-//void  LCD_clear();
-//void	LCD_send_data (uint8_t  data);
-//void 	LCD_print (char *str);
-//void 	LCD_print_xy (uint8_t x, uint8_t y, char *str); 
-//void 	LCD_goto_XY (uint8_t x, uint8_t y);  
+//how to use:
+//LCD_init();
+//LCD_Print("My String");
+//LCD_print_XY(0,0,"My String");
+//LCD_goto_XY(16,3); LCD_print("My String");
+//LCD_Clear();
